@@ -11,7 +11,7 @@
     group = "emelie";
     extraGroups = [ "wheel" ];
   };
-  users.groups.emelie = {}
+  users.groups.emelie = {};
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
