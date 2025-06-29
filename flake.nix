@@ -43,15 +43,39 @@
                         type = "filesystem";
                         format = "vfat";
                         mountpoint = "/boot";
-                        mountOptions = [ "umask=0077" "default" ];
+                        mountOptions = [ "umask=0077" "defaults" ];
                       };
                     };
-                    root = {
+                    main = {
+                      end = "-32G";
+                      content = {
+                        type = "btrfs";
+                        extraArgs = [ "-f" ]; # Override existing partition
+                        subvolumes = {
+                          "/root" = {
+                            mountpoint = "/";
+                            mountOptions = [ "compress=zstd" "noatime" ];
+                          };
+                          "/home" = {
+                            mountpoint = "/home";
+                            mountOptions = [ "compress=zstd" "noatime" ];
+                          };
+                          "/var" = {
+                            mountpoint = "/var";
+                            mountOptions = [ "compress=zstd" "noatime" ];
+                          };
+                          "/nix" = {
+                            mountpoint = "/nix";
+                            mountOptions = [ "compress=zstd" "noatime" ];
+                          };
+                        };
+                      };
+                    };
+                    swap = {
                       size = "100%";
                       content = {
-                        type = "filesystem";
-                        format = "ext4";
-                        mountpoint = "/";
+                        type = "swap";
+                        randomEncryption = true;
                       };
                     };
                   };
