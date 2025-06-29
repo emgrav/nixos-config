@@ -18,7 +18,7 @@
         xkb_layout = "us";
         xkb_variant = "workman";
         xkb_options = "caps:swapescape";
-      }
+      };
     };
   };
 
