@@ -12,7 +12,6 @@ with pkgs; [
   killall
   neofetch
   openssh
-  sqlite
   wget
   zip
 
@@ -21,10 +20,6 @@ with pkgs; [
   age-plugin-yubikey
   gnupg
   libfido2
-
-  # Cloud-related tools and SDKs
-  docker
-  docker-compose
 
   # Media-related packages
   emacs-all-the-icons-fonts
@@ -37,23 +32,17 @@ with pkgs; [
   noto-fonts-emoji
   meslo-lgs-nf
 
-  # Node.js development tools
-  nodePackages.npm # globally install npm
-  nodePackages.prettier
-  nodejs
-
   # Text and terminal utilities
+  neovim
   htop
   hunspell
   iftop
-  jetbrains-mono
   jq
   ripgrep
   tree
   tmux
   unrar
   unzip
-  zsh-powerlevel10k
 
   # Python packages
   python3

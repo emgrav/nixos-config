@@ -3,19 +3,20 @@ _: {
   # Other examples found here: https://github.com/nix-community/disko/tree/master/example
   disko.devices = {
     disk = {
-      vdb = {
-        device = "/dev/%DISK%";
+      main = {
+        device = "/dev/disk/by-id/%DISK%";
         type = "disk";
         content = {
           type = "gpt";
           partitions = {
             ESP = {
               type = "EF00";
-              size = "100M";
+              size = "1G";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
+                mountOptions = [ "umask-0077" ];
               };
             };
             root = {
