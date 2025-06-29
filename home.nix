@@ -1,31 +1,50 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   home.username = "emelie";
-  home.homedirectory = "/home/emelie";
+  home.homeDirectory = lib.mkDefault "/home/emelie";
 
   home.packages = with pkgs; [
     neovim
+    neovide
     ripgrep
+    bitwarden-desktop
   ];
 
   home.shell.enableFishIntegration = true;
+  home.stateVersion = "25.05";
 
-
-  
-  programs.alacritty = {
+ wayland.windowManager.sway = {
     enable = true;
-    # custom settings
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        size = 12;
-        draw_bold_text_with_bright_colors = true;
+    config = rec {
+      modifier = "Mod4";
+      terminal = "alacritty";
+      input."*" = {
+        xkb_layout = "us";
+        xkb_variant = "workman";
+        xkb_options = "caps:swapescape";
       };
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
     };
   };
-  programs.fish = {
-    enable = true;
-  }
+
+  programs = {
+    firefox.enable = true; 
+    alacritty.enable = true;
+    fish.enable = true;
+    rofi.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
+    git = {
+      enable = true;
+      userName = "Emelie Graven";
+      userEmail = "emelie@graven.se";
+      lfs.enable = true;
+      extraConfig = {
+        init.defaultBranch = "main";
+        core.editor = "nvim";
+        push.autoSetupRemote = true;
+      };
+    };
+  };
 }

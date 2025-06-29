@@ -2,27 +2,37 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./disk-config.nix
-    flake-inputs.nixos-hardware.nixosModules.common-pc-laptop
-    flake-inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-
-    flake-inputs.nixos-hardware.nixosModules.common-cpu-amd
   ];
 
-  wayland.windowManager.sway = {
-    enable = true;
-    config = rec {
-      modifier = "Mod4";
-      terminal = "alacritty";
-      input."*" = {
-        xkb_layout = "us";
-        xkb_variant = "workman";
-        xkb_options = "caps:swapescape";
-      }
+  users.defaultUserShell = pkgs.fish;
+  users.users.emelie = {
+    openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAn9xV1GA/hMkCFoP7DWzYyGmbeiri823fHMRz0ZVoxq bitwarden" ];
+    hashedPassword = "$y$j9T$ln5W/77D9oSZa9upt88EN1$ptJS3ItAcU6kmpe4JxAv73EVBtY3NiqxuB.faRVQeQ4";
+    shell = pkgs.fish;
+    isNormalUser = true;
+    group = "emelie";
+    extraGroups = [ "wheel" ];
+  };
+  users.groups.emelie = {};
+
+  nix = {
+    package = pkgs.lix;
+
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      substituters = [ "https://cache.nixos.org" "https://nix-community.cachix.org" ];
+      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "Thu";
     };
   };
-
-  users.users.emelie.shell = pkgs.fish;
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -31,7 +41,28 @@
   
   programs = {
     fish.enable = true;
+    sway.enable = true;
+    uwsm = {
+      enable = true;
+      waylandCompositors.sway = {
+        prettyName = "Sway";
+        comment = "Sway compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/sway";
+      };
+    };
   };
+
+
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "workman";
+      options = "caps:swapescape";
+    };
+  };
+
+  console.useXkbConfig = true;
 
   system.stateVersion = "25.05";
 }
