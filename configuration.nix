@@ -4,7 +4,11 @@
     ./hardware-configuration.nix
   ];
 
-  users.users.emelie.shell = pkgs.fish;
+  users.users.emelie = {
+    shell = pkgs.fish;
+    isNormalUser = true;
+    group = "emelie";
+  };
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
