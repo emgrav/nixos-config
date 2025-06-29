@@ -4,7 +4,7 @@
     ./hardware-configuration.nix
   ];
 
-  wayland.windowManager.sway = {
+  flake-inputs.home-manager.wayland.windowManager.sway = {
     enable = true;
     config = rec {
       modifier = "Mod4";
