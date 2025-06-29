@@ -4,19 +4,6 @@
     ./hardware-configuration.nix
   ];
 
-  flake-inputs.home-manager.wayland.windowManager.sway = {
-    enable = true;
-    config = rec {
-      modifier = "Mod4";
-      terminal = "alacritty";
-      input."*" = {
-        xkb_layout = "us";
-        xkb_variant = "workman";
-        xkb_options = "caps:swapescape";
-      };
-    };
-  };
-
   users.users.emelie.shell = pkgs.fish;
   
   boot.loader.systemd-boot.enable = true;
