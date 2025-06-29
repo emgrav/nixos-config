@@ -5,6 +5,7 @@
 
   home.packages = with pkgs; [
     neovim
+    neovide
     ripgrep
   ];
 
@@ -24,21 +25,25 @@
     };
   };
 
-  programs.firefox.enable = true; 
-  programs.alacritty = {
-    enable = true;
-    # custom settings
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        size = 12;
-        draw_bold_text_with_bright_colors = true;
-      };
-      scrolling.multiplier = 5;
-      selection.save_to_clipboard = true;
+  programs = {
+    firefox.enable = true; 
+    alacritty.enable = true;
+    fish.enable = true;
+    rofi.enable = true;
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
-  };
-  programs.fish = {
-    enable = true;
+    git = {
+      enable = true;
+      userName = "Emelie Graven";
+      userEmail = "emelie@graven.se";
+      lfs.enable = true;
+      extraConfig = {
+        init.defaultBranch = "main";
+        core.editor = "nvim";
+        push.autoSetupRemote = true;
+      };
+    };
   };
 }
