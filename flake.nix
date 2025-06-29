@@ -1,6 +1,6 @@
 {
   inputs = {
-	  nixpkgs.url = "github.com:NixOS/nixpkgs/nixos-unstable";
+	  nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -9,7 +9,7 @@
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-hardware.url = "github.com:NixOS/nixos-hardware/master";
+    nix-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = { self, disko, nixpkgs, home-manager, ...}@inputs: {
@@ -22,7 +22,6 @@
           home-manager.useGlobalPackages = true;
           home-manager.useUserPackages = true;
           home-manager.users.emelie = import ./home.nix;
-          home-manager.extraSpecialArgs = { inherit nixpkgs; };
         }
         disko.nixosModules.disko
         {
