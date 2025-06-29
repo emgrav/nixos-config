@@ -14,6 +14,25 @@
     extraGroups = [ "wheel" ];
   };
   users.groups.emelie = {};
+
+  nix = {
+    package = pkgs.lix;
+
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      substituters = [ "https://cache.nixos.org" "https://nix-community.cachix.org" ];
+      trusted-public-keys = [ "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=" "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+    };
+
+    gc = {
+      automatic = true;
+      dates = "Thu";
+    };
+  };
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -34,7 +53,16 @@
   };
 
 
-  service
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "workman";
+      options = "caps:swapescape";
+    };
+  };
+
+  console.useXkbConfig = true;
 
   system.stateVersion = "25.05";
 }
