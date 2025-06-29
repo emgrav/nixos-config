@@ -22,6 +22,18 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.emelie = import ./home.nix;
+          home-manager.wayland.windowManager.sway = {
+            enable = true;
+            config = rec {
+              modifier = "Mod4";
+              terminal = "alacritty";
+              input."*" = {
+                xkb_layout = "us";
+                xkb_variant = "workman";
+                xkb_options = "caps:swapescape";
+              };
+            };
+          };
         }
         disko.nixosModules.disko
         {
