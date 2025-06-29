@@ -22,7 +22,7 @@
           home-manager.useGlobalPackages = true;
           home-manager.useUserPackages = true;
           home-manager.users.emelie = import ./home.nix;
-          home-manager.extraSpecialArgs = { inherit nixpkgs; }
+          home-manager.extraSpecialArgs = { inherit nixpkgs; };
         }
         disko.nixosModules.disko
         {
