@@ -19,7 +19,7 @@
         ./configuration.nix
         home-manager.nixosModules.home-manager
         {
-          home-manager.useGlobalPackages = true;
+          home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.users.emelie = import ./home.nix;
         }
