@@ -10,6 +10,18 @@
 
   home.shell.enableFishIntegration = true;
 
+ wayland.windowManager.sway = {
+    enable = true;
+    config = rec {
+      modifier = "Mod4";
+      terminal = "alacritty";
+      input."*" = {
+        xkb_layout = "us";
+        xkb_variant = "workman";
+        xkb_options = "caps:swapescape";
+      };
+    };
+  };
 
   
   programs.alacritty = {
