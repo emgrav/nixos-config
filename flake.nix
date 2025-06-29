@@ -9,6 +9,7 @@
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-hardware.url = "github.com:NixOS/nixos-hardware/master";
   };
 
   outputs = { self, disko, nixpkgs, home-manager, ...}@inputs: {
