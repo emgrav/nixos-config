@@ -2,10 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    flake-inputs.nixos-hardware.nixosModules.common-pc-laptop
-    flake-inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
-
-    flake-inputs.nixos-hardware.nixosModules.common-cpu-amd
   ];
 
   wayland.windowManager.sway = {
