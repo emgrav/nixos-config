@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }:
 {
   home.username = "emelie";
-  home.homeDirectory = lib mkDefault "/home/emelie";
+  home.homeDirectory = lib.mkDefault "/home/emelie";
 
   home.packages = with pkgs; [
     neovim
