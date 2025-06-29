@@ -39,5 +39,5 @@
   };
   programs.fish = {
     enable = true;
-  }
+  };
 }
