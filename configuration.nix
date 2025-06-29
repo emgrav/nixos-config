@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./disk-config.nix
     flake-inputs.nixos-hardware.nixosModules.common-pc-laptop
     flake-inputs.nixos-hardware.nixosModules.common-pc-laptop-ssd
 
