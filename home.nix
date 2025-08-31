@@ -20,7 +20,7 @@
       terminal = "alacritty";
       input."*" = {
         xkb_layout = "us";
-        xkb_variant = "workman";
+        #xkb_variant = "workman";
         xkb_options = "caps:swapescape";
       };
     };
@@ -31,6 +31,11 @@
     alacritty.enable = true;
     fish.enable = true;
     rofi.enable = true;
+    helix = {
+      enable = true;
+      settings.editor.lsp.display-messages = true;
+      languages.language-server.rust-analyzer.config.check.command = "clippy";
+    };
     direnv = {
       enable = true;
       nix-direnv.enable = true;

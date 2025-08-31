@@ -57,7 +57,7 @@
     enable = true;
     xkb = {
       layout = "us";
-      variant = "workman";
+      #variant = "workman";
       options = "caps:swapescape";
     };
   };
