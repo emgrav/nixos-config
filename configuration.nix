@@ -15,6 +15,8 @@
   };
   users.groups.emelie = {};
 
+  nixpkgs.config.allowUnfree = true;
+
   nix = {
     package = pkgs.lix;
 
