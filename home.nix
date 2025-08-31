@@ -8,6 +8,9 @@
     neovide
     ripgrep
     bitwarden-desktop
+    musescore
+    muse-sounds-manager
+    # unfree
     bitwig-studio
   ];
 
