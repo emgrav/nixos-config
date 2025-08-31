@@ -8,6 +8,7 @@
     neovide
     ripgrep
     bitwarden-desktop
+    bitwig-studio
   ];
 
   home.shell.enableFishIntegration = true;
