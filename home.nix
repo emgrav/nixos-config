@@ -13,9 +13,13 @@
     # unfree
     bitwig-studio
     discord
+    nheko
   ];
 
   home.shell.enableFishIntegration = true;
+  home.sessionVariables = {
+    SSH_AUTH_SOCK = "/home/emelie/.bitwarden-ssh-agent.sock";
+  };
   home.stateVersion = "25.05";
 
  wayland.windowManager.sway = {
