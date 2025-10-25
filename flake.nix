@@ -1,6 +1,6 @@
 {
   inputs = {
-	  nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,7 +12,13 @@
     nix-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, disko, nixpkgs, home-manager, ...}@inputs: {
+  outputs = {
+    self,
+    disko,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: {
     nixosConfigurations.watty-nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
@@ -43,30 +49,30 @@
                         type = "filesystem";
                         format = "vfat";
                         mountpoint = "/boot";
-                        mountOptions = [ "umask=0077" "defaults" ];
+                        mountOptions = ["umask=0077" "defaults"];
                       };
                     };
                     main = {
                       end = "-32G";
                       content = {
                         type = "btrfs";
-                        extraArgs = [ "-f" ]; # Override existing partition
+                        extraArgs = ["-f"]; # Override existing partition
                         subvolumes = {
                           "/root" = {
                             mountpoint = "/";
-                            mountOptions = [ "compress=zstd" "noatime" ];
+                            mountOptions = ["compress=zstd" "noatime"];
                           };
                           "/home" = {
                             mountpoint = "/home";
-                            mountOptions = [ "compress=zstd" "noatime" ];
+                            mountOptions = ["compress=zstd" "noatime"];
                           };
                           "/var" = {
                             mountpoint = "/var";
-                            mountOptions = [ "compress=zstd" "noatime" ];
+                            mountOptions = ["compress=zstd" "noatime"];
                           };
                           "/nix" = {
                             mountpoint = "/nix";
-                            mountOptions = [ "compress=zstd" "noatime" ];
+                            mountOptions = ["compress=zstd" "noatime"];
                           };
                         };
                       };
