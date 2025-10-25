@@ -10,11 +10,12 @@
     bitwarden-desktop
     musescore
     muse-sounds-manager
+    element-desktop
+    nixfmt-rfc-style
+    alejandra
     # unfree
     bitwig-studio
     discord
-    cinny-desktop
-    element-desktop
   ];
 
   home.shell.enableFishIntegration = true;
@@ -34,6 +35,63 @@
         xkb_options = "caps:swapescape";
       };
     };
+  };
+  services = {
+    gnome-keyring.enable = true;
+    swayidle =
+      let
+  # Lock command
+  lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+  # TODO: modify "display" function based on your window manager
+  # Sway
+  display = status: "swaymsg 'output * power ${status}'";
+  # Hyprland
+  # display = status: "hyprctl dispatch dpms ${status}";
+  # Niri
+  # display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
+in
+{
+  enable = true;
+  timeouts = [
+    {
+      timeout = 180; # in seconds
+      command = "${pkgs.libnotify}/bin/notify-send 'Locking in 10 seconds' -t 10000";
+    }
+    {
+      timeout = 190;
+      command = lock;
+    }
+    {
+      timeout = 200;
+      command = display "off";
+      resumeCommand = display "on";
+    }
+    {
+      timeout = 600;
+      command = "${pkgs.systemd}/bin/systemctl suspend";
+    }
+  ];
+  events = [
+    {
+      event = "before-sleep";
+      # adding duplicated entries for the same event may not work
+      command = (display "off") + "; " + lock;
+    }
+    {
+      event = "after-resume";
+      command = display "on";
+    }
+    {
+      event = "lock";
+      command = (display "off") + "; " + lock;
+    }
+    {
+      event = "unlock";
+      command = display "on";
+    }
+  ];
+};
+
   };
 
   programs = {
