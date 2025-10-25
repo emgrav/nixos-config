@@ -13,7 +13,8 @@
     # unfree
     bitwig-studio
     discord
-    nheko
+    cinny-desktop
+    element-desktop
   ];
 
   home.shell.enableFishIntegration = true;
