@@ -11,7 +11,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     group = "emelie";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
   users.groups.emelie = {};
 
@@ -38,7 +38,10 @@
   
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  networking.hostName = "watty-nixos";
+  networking = {
+    hostName = "watty-nixos";
+    networkmanager.enable = true;
+  };
   time.timeZone = "Europe/Copenhagen";
   
   programs = {
