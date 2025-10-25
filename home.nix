@@ -12,6 +12,7 @@
     muse-sounds-manager
     # unfree
     bitwig-studio
+    discord
   ];
 
   home.shell.enableFishIntegration = true;
