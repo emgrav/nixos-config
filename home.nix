@@ -7,6 +7,10 @@
   home.username = "emelie";
   home.homeDirectory = lib.mkDefault "/home/emelie";
 
+  home.file = {
+    ".ssh/allowed_signers".text = "emelie@graven.se namespaces=\"git\" ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAn9xV1GA/hMkCFoP7DWzYyGmbeiri823fHMRz0ZVoxq";
+  };
+
   home.packages = with pkgs; [
     neovim
     neovide
@@ -123,6 +127,7 @@
         init.defaultBranch = "main";
         core.editor = "hx";
         push.autoSetupRemote = true;
+        gpg.ssh.allowedSignersFile = "/home/emelie/.ssh/allowed_signers";
       };
     };
   };
