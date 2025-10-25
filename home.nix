@@ -114,9 +114,13 @@
       userName = "Emelie Graven";
       userEmail = "emelie@graven.se";
       lfs.enable = true;
+      signing = {
+        signByDefault = true;
+        format = "ssh";
+      };
       extraConfig = {
         init.defaultBranch = "main";
-        core.editor = "nvim";
+        core.editor = "hx";
         push.autoSetupRemote = true;
       };
     };
