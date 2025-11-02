@@ -45,7 +45,10 @@
     };
   };
   services = {
-    gnome-keyring.enable = true;
+    gnome-keyring = {
+      enable = true;
+      components = ["secrets"];
+    };
     swayidle = let
       # Lock command
       lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
