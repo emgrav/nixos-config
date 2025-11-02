@@ -22,6 +22,7 @@
     nixfmt-rfc-style
     alejandra
     monero-gui
+    tor-browser
     # unfree
     bitwig-studio
     discord
