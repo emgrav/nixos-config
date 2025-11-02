@@ -77,6 +77,7 @@
   services = {
     monero.enable = true;
     trezord.enable = true;
+    gnome.gnome-keyring.enable = true;
   };
   
   console.useXkbConfig = true;
