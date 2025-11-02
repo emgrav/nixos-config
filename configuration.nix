@@ -74,8 +74,11 @@
     };
   };
 
-  services.monero.enable = true;
-
+  services = {
+    monero.enable = true;
+    trezord.enable = true;
+  };
+  
   console.useXkbConfig = true;
 
   system.stateVersion = "25.05";

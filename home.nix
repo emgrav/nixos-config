@@ -23,6 +23,7 @@
     alejandra
     monero-gui
     tor-browser
+    trezor-suite
     # unfree
     bitwig-studio
     discord
