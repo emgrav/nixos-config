@@ -74,6 +74,8 @@
     };
   };
 
+  services.monero.enable = true;
+
   console.useXkbConfig = true;
 
   system.stateVersion = "25.05";

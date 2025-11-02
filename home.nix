@@ -21,6 +21,7 @@
     element-desktop
     nixfmt-rfc-style
     alejandra
+    monero-gui
     # unfree
     bitwig-studio
     discord
