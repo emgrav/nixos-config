@@ -24,6 +24,7 @@
     monero-gui
     tor-browser
     trezor-suite
+    trezor-udev-rules
     # unfree
     bitwig-studio
     discord
