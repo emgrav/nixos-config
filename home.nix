@@ -53,6 +53,7 @@
       enable = true;
       components = ["secrets"];
     };
+    gpg-agent.enable = true;
     swayidle = let
       # Lock command
       lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
@@ -111,6 +112,7 @@
     alacritty.enable = true;
     fish.enable = true;
     rofi.enable = true;
+    gpg.enable = true;
     helix = {
       enable = true;
       settings.editor.lsp.display-messages = true;

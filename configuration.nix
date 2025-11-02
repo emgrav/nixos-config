@@ -78,6 +78,7 @@
     monero.enable = true;
     trezord.enable = true;
     gnome.gnome-keyring.enable = true;
+    pcscd.enable = true;
   };
   
   console.useXkbConfig = true;
