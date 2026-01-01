@@ -44,6 +44,8 @@
     enable32Bit = true;
   };
 
+  hardware.steam-hardware.enable = true;
+
   networking = {
     firewall.enable = true;
     nftables.enable = true;
@@ -67,6 +69,10 @@
         comment = "Sway compositor managed by UWSM";
         binPath = "/run/current-system/sw/bin/sway";
       };
+    };
+    steam = {
+      enable = true;
+      protontricks.enable = true;
     };
   };
 
