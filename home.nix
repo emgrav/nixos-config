@@ -25,6 +25,7 @@
     tor-browser
     trezor-suite
     trezor-udev-rules
+    audacity
     # unfree
     bitwig-studio
     discord
@@ -53,7 +54,10 @@
       enable = true;
       components = ["secrets"];
     };
-    gpg-agent.enable = true;
+    gpg-agent = {
+      enable = true;
+      pinentry.package = pkgs.pinentry-gnome3;
+    };
     swayidle = let
       # Lock command
       lock = "${pkgs.swaylock}/bin/swaylock --daemonize";

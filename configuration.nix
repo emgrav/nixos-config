@@ -44,6 +44,11 @@
     enable32Bit = true;
   };
 
+  networking = {
+    firewall.enable = true;
+    nftables.enable = true;
+  };
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   networking = {
@@ -79,6 +84,8 @@
     trezord.enable = true;
     gnome.gnome-keyring.enable = true;
     pcscd.enable = true;
+    dbus.packages = [ pkgs.gcr ];
+    tailscale.enable = true;
   };
   
   console.useXkbConfig = true;
