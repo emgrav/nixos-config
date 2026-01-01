@@ -128,15 +128,15 @@
     };
     git = {
       enable = true;
-      userName = "Emelie Graven";
-      userEmail = "emelie@graven.se";
       lfs.enable = true;
       signing = {
         key = "key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAn9xV1GA/hMkCFoP7DWzYyGmbeiri823fHMRz0ZVoxq";
         signByDefault = true;
         format = "ssh";
       };
-      extraConfig = {
+      settings = {
+        user.name = "Emelie Graven";
+        user.email = "emelie@graven.se";
         init.defaultBranch = "main";
         core.editor = "hx";
         push.autoSetupRemote = true;
