@@ -14,7 +14,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     group = "emelie";
-    extraGroups = ["wheel" "networkmanager" "podman"];
+    extraGroups = ["wheel" "networkmanager" "podman" "docker" ];
   };
   users.groups.emelie = {};
 
@@ -99,9 +99,12 @@
   virtualisation = {
   containers.enable = true;
   podman = {
-    enable = true;
+    enable = false;
     dockerCompat = true;
     defaultNetwork.settings.dns_enabled = true; # Required for containers under podman-compose to be able to talk to each other.
+  };
+  docker = {
+    enable = true;
   };
 };
 
