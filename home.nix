@@ -26,6 +26,7 @@
     trezor-suite
     trezor-udev-rules
     audacity
+    calibre
     # unfree
     bitwig-studio
     discord
@@ -37,6 +38,14 @@
   };
   home.stateVersion = "25.05";
 
+#  let
+#    modifier = config.wayland.windowManager.sway.config.modifier;
+#  in lib.mkOptionDefault {
+#    "${modifier}+Shift+s" = "exec swayidle idlehint 1";
+#    "${modifier}+Shift+p" = "systemctl poweroff";
+#  }
+
+
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
@@ -45,7 +54,11 @@
       input."*" = {
         xkb_layout = "us";
         #xkb_variant = "workman";
-        xkb_options = "caps:swapescape";
+        xkb_options = "caps:escape";
+      };
+      output."DP-1" = {
+        adaptive_sync = "on";
+        mode = "3440x1440@164.900Hz";
       };
     };
   };
