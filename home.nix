@@ -17,7 +17,6 @@
     ripgrep
     bitwarden-desktop
     musescore
-    muse-sounds-manager
     element-desktop
     nixfmt-rfc-style
     alejandra
