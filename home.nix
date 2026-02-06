@@ -28,6 +28,7 @@
     audacity
     calibre
     signal-desktop
+    direnv
     # unfree
     bitwig-studio
     discord
