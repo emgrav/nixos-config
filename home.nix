@@ -28,6 +28,7 @@
     calibre
     signal-desktop
     direnv
+    thunderbird
     # unfree
     bitwig-studio
     discord
