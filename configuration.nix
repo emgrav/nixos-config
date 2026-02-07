@@ -14,7 +14,7 @@
     shell = pkgs.fish;
     isNormalUser = true;
     group = "emelie";
-    extraGroups = ["wheel" "networkmanager" "podman" "docker" ];
+    extraGroups = ["wheel" "networkmanager" "podman" "docker"];
   };
   users.groups.emelie = {};
 
@@ -97,7 +97,7 @@
   console.useXkbConfig = true;
 
   virtualisation = {
-  containers.enable = true;
+  containers.enable = false;
   podman = {
     enable = false;
     dockerCompat = true;
