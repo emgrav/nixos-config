@@ -29,6 +29,8 @@
     signal-desktop
     direnv
     thunderbird
+    wireguard-tools
+    wireguard-go
     # unfree
     bitwig-studio
     discord
