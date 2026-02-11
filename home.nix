@@ -31,6 +31,7 @@
     thunderbird
     wireguard-tools
     wireguard-go
+    flameshot
     # unfree
     bitwig-studio
     discord
@@ -42,18 +43,13 @@
   };
   home.stateVersion = "25.05";
 
-#  let
-#    modifier = config.wayland.windowManager.sway.config.modifier;
-#  in lib.mkOptionDefault {
-#    "${modifier}+Shift+s" = "exec swayidle idlehint 1";
-#    "${modifier}+Shift+p" = "systemctl poweroff";
-#  }
-
-
   wayland.windowManager.sway = {
     enable = true;
     config = rec {
       modifier = "Mod4";
+      keybindings = lib.mkOptionDefault {
+        "${modifier}+Shift+4" = ''exec ${pkgs.flameshot}/bin/flameshot gui --clipboard --pin --path ~/Pictures'';
+      };
       terminal = "alacritty";
       input."*" = {
         xkb_layout = "us";
