@@ -49,6 +49,8 @@
       modifier = "Mod4";
       keybindings = lib.mkOptionDefault {
         "${modifier}+Shift+4" = ''exec ${pkgs.flameshot}/bin/flameshot gui --clipboard --pin --path ~/Pictures'';
+        "${modifier}+Shift+s" = "exec swayidle idlehint 1";
+        "${modifier}+Shift+p" = "systemctl poweroff";
       };
       terminal = "alacritty";
       input."*" = {
