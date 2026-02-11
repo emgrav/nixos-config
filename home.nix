@@ -32,6 +32,7 @@
     wireguard-tools
     wireguard-go
     flameshot
+    feishin
     # unfree
     bitwig-studio
     discord
